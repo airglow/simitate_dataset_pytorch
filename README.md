@@ -9,7 +9,7 @@ As of now just trajectories are loaded. Image sequences will be added soon.
 
 ### Loading
 
-```
+```{python}
 import torch
 from simitate_dataset import SimitateTrajectoriesDataset
 # First param is the source/taget directory, Second parameter describes if the trajectories should be downloaded
@@ -20,7 +20,7 @@ simitate_data = SimitateTrajectoriesDataset(".", download=True, categories=["bas
 ### Plotting
 
 
-```
+```{python}
 for i in range(3): 
     data_sample = random.choice(range(len(simitate_data.trajectory_data)))
     simitate_data.plot(data_sample)
