@@ -1,7 +1,9 @@
 # Simitate dataset class for pytorch
 
+Simitate is a hybrid approach for benchmarking imitation learning tasks. This repository gives a pytorch dataset integration for the Simitate dataset which is part of the benchmarking approach.
+
 Currently only trajectories are supported. The dataset class downloads the simitate trajectories 
-and creates a pytorch Dataset.
+and creates a pytorch dataset class.
 
 As of now just trajectories are loaded. Image sequences will be added soon.
 
