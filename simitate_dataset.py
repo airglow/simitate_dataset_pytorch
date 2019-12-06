@@ -53,7 +53,7 @@ class SimitateTrajectoriesDataset(VisionDataset):
     filename = "simitate_trajectories"
     zips_md5 = {
         # TODO update this, when updating zip
-        'simitate_trajectories': 'df505c486395fa887f52b840441a6004',
+        'simitate_trajectories': '92d4afb45e7d6f474339c797767fa1aa',
         'simitate_sequences': ""}
 
     categories = []
@@ -133,21 +133,26 @@ class SimitateTrajectoriesDataset(VisionDataset):
                         self.trajectories.extend(trajectories)
                         try:
                             trajectory_file = join(sequence_folder, trajectories[0])
-                            if trajectory_file == "openpose.csv":
+                            # print("Trajectory File", trajectory_file)
+                            if trajectory_file[0] == "openpose.csv":
                                 continue
                             # # using panda
                             #  trajectory_data = pd.read_csv(trajectory_file)
                             # #  using simitate trajectory loader
 
                             # print ("Load", trajectory_file)
-                            self.trajectory_loader.load_trajectories(trajectory_file, ["hand"])
+                            self.trajectory_loader.load_trajectories(trajectory_file)
+                            #self.trajectory_loader.load_trajectories(trajectory_file, ["hand"])
                             
-                            current_trajectory = self.trajectory_loader.trajectories["hand"][:,1:] # first times is time
+                            current_trajectory = self.trajectory_loader.trajectories["hand"][:,1:] # first column is time
+                            current_trajectories = self.trajectory_loader.trajectories
                             #traj = traj[:][:][:][1:]
                             #print("traj1", traj)
                             current_trajectory_plot = None  #  self.trajectory_loader.plot_trajectories(show=False)
                             trajectory_data = {"class_id": self.classes.index(current_class),
                                               "trajectory": torch.from_numpy(current_trajectory).float(),
+                                              "trajectories": current_trajectories,
+                                              "trajectory_file": trajectory_file,
                                               "plot": current_trajectory_plot}
                             # print(type(trajectory_data))
                             # print(trajectory_data["trajectory"])
