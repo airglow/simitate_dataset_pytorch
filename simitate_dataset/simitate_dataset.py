@@ -53,7 +53,7 @@ class SimitateTrajectoriesDataset(VisionDataset):
     filename = "simitate_trajectories"
     zips_md5 = {
         # TODO update this, when updating zip
-        'simitate_trajectories': 'd00962d963b85c948b0b15e5950410e3',
+        'simitate_trajectories': 'c499ff41e84a30b0ca21d0b89750fc85',
         'simitate_sequences': ""}
 
     categories = []
