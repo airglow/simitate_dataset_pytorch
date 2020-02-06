@@ -20,7 +20,7 @@ from matplotlib import cm
 from torchvision.datasets import VisionDataset
 from torchvision.datasets.utils import download_and_extract_archive,\
     check_integrity, list_dir, list_files
-from trajectory_loader import SimitateTrajectoryLoader
+from simitate.trajectory_loader import SimitateTrajectoryLoader
 # from trajectory_loader import plot_trajectory
 
 def plot_trajectory(subplot, label, trajectory_data, char=None):
@@ -182,10 +182,10 @@ class SimitateTrajectoriesDataset(VisionDataset):
         # TODO: get image sequence here
         return self.trajectory_data[index]["trajectory"], self.trajectory_data[index]["class_id"]
 
-    def plot(self, index):
+    def plot(self, index, usetex=False):
         fig = plt.figure()
 
-        plt.rc('text', usetex=True)
+        plt.rc('text', usetex=usetex)
         plt.rc('font', family='serif')
         ax = fig.add_subplot("111", projection='3d')
         ax.set_title(self.trajectories[index].replace("_", "\_"))
